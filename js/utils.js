@@ -50,6 +50,7 @@ export function crearTarjetaTarea(tarea) {
   } else {
     divBotones.appendChild(crearBoton("En progreso", "enProgresoBoton", tarea.id));
   }
+  divBotones.appendChild(crearBoton("Editar", "editarBoton", tarea.id));
   divBotones.appendChild(crearBoton("Eliminar", "eliminarBoton", tarea.id));
   div.appendChild(divBotones);
 

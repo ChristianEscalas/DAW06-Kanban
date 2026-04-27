@@ -3,6 +3,7 @@ export function cargarTareas() {
 }
 
 let tareas = cargarTareas();
+let idEditando = null;
 
 function calcularId() {
   let maxId = 0;
@@ -20,19 +21,33 @@ function guardarTareas(tareas) {
 
 export function crearTarea(mostrarTareas) {
   const form = document.getElementById("crearForm");
+  const botonSubmit = form.querySelector("button[type='submit'][id='crearTarea']");
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const tarea = {};
-    tarea.id = calcularId();
-    tarea.titulo = document.getElementById("titulo").value;
-    tarea.descripcion = document.getElementById("descripcion").value;
-    tarea.prioridad = document.getElementById("prioridadCrear").value;
-    tarea.estado = "porHacer";
-    tarea.fechaVencimiento = document.getElementById("fechaVencimiento").value;
+    if (idEditando !== null) {
+      const tarea = tareas.find((tarea) => tarea.id === parseInt(idEditando));
+      if (tarea) {
+        tarea.titulo = document.getElementById("titulo").value;
+        tarea.descripcion = document.getElementById("descripcion").value;
+        tarea.prioridad = document.getElementById("prioridadCrear").value;
+        tarea.fechaVencimiento = document.getElementById("fechaVencimiento").value;
+      }
+      idEditando = null;
+      botonSubmit.textContent = "Crear";
+    } else {
+      const nuevatarea = {};
+      nuevatarea.id = calcularId();
+      nuevatarea.titulo = document.getElementById("titulo").value;
+      nuevatarea.descripcion = document.getElementById("descripcion").value;
+      nuevatarea.prioridad = document.getElementById("prioridadCrear").value;
+      nuevatarea.estado = "porHacer";
+      nuevatarea.fechaVencimiento = document.getElementById("fechaVencimiento").value;
 
-    tareas.push(tarea);
+      tareas.push(nuevatarea);
+    }
+
     form.reset();
     guardarTareas(tareas);
 
@@ -74,4 +89,19 @@ export function eliminarTarea(id, mostrarTarjetas) {
   if (mostrarTarjetas) {
     mostrarTarjetas(tareas);
   }
+}
+
+export function editarTarea(id) {
+  const tarea = tareas.find((tarea) => tarea.id === parseInt(id));
+
+  if (!tarea) return;
+
+  idEditando = id;
+  const form = document.getElementById("crearForm");
+  form["titulo"].value = tarea.titulo;
+  form["descripcion"].value = tarea.descripcion;
+  form["prioridadCrear"].value = tarea.prioridad;
+  form["fechaVencimiento"].value = tarea.fechaVencimiento;
+
+  form.querySelector("button[type='submit'][id='crearTarea']").textContent = "Actualizar";
 }

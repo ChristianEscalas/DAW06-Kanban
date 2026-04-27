@@ -1,5 +1,5 @@
 import { mostrarTareas } from "./kanban.js";
-import { crearTarea, cargarTareas, cambiarEstadoTarjeta, eliminarTarea } from "./tarea.js";
+import { crearTarea, cargarTareas, cambiarEstadoTarjeta, eliminarTarea, editarTarea } from "./tarea.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const tareas = cargarTareas();
@@ -17,5 +17,9 @@ document.addEventListener("click", (event) => {
 
   if (elemento.classList.contains("eliminarBoton")) {
     eliminarTarea(id, mostrarTareas);
+  }
+
+  if (elemento.classList.contains("editarBoton")) {
+    editarTarea(id);
   }
 });
