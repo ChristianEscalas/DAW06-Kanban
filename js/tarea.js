@@ -2,7 +2,7 @@ export function cargarTareas() {
   return JSON.parse(localStorage.getItem("listaTareas")) || [];
 }
 
-const tareas = cargarTareas();
+let tareas = cargarTareas();
 
 function calcularId() {
   let maxId = 0;
@@ -60,6 +60,15 @@ export function cambiarEstadoTarjeta(id, mostrarTarjetas) {
   } else {
     tarea.estado = "enProgreso";
   }
+
+  guardarTareas(tareas);
+  if (mostrarTarjetas) {
+    mostrarTarjetas(tareas);
+  }
+}
+
+export function eliminarTarea(id, mostrarTarjetas) {
+  tareas = tareas.filter((tarea) => tarea.id !== parseInt(id));
 
   guardarTareas(tareas);
   if (mostrarTarjetas) {

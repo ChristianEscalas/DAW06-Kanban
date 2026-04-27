@@ -10,11 +10,11 @@ function crearParStrong(textoP, textoS, clase) {
   return p;
 }
 
-function crearBoton(texto, id, tareaId) {
+function crearBoton(texto, clase, tareaId) {
   const boton = document.createElement("button");
   boton.type = "button";
   boton.appendChild(document.createTextNode(texto));
-  boton.id = id;
+  boton.className = clase;
   boton.dataset.id = tareaId;
 
   return boton;
