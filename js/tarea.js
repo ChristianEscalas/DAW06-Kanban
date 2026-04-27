@@ -41,3 +41,24 @@ export function crearTarea(mostrarTareas) {
     }
   });
 }
+
+export function cambiarEstadoTarjeta(id, mostrarTarjetas) {
+  let tarea = {};
+  for (let tareaLista of tareas) {
+    if (tareaLista.id === parseInt(id)) {
+      tarea = tareaLista;
+    }
+  }
+
+  if (tarea.estado === "porHacer") {
+    tarea.estado = "enProgreso";
+  } else if (tarea.estado === "enProgreso") {
+    tarea.estado = "hecha";
+  } else {
+    tarea.estado = "enProgreso";
+  }
+
+  if (mostrarTarjetas) {
+    mostrarTarjetas(tareas);
+  }
+}

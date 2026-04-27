@@ -1,7 +1,16 @@
 import { mostrarTareas } from "./kanban.js";
-import { crearTarea, cargarTareas } from "./tarea.js";
+import { crearTarea, cargarTareas, cambiarEstadoTarjeta } from "./tarea.js";
 
-const tareas = cargarTareas();
+document.addEventListener("DOMContentLoaded", () => {
+  const tareas = cargarTareas();
+  mostrarTareas(tareas);
+  crearTarea(mostrarTareas);
+});
 
-crearTarea(mostrarTareas);
-mostrarTareas(tareas);
+document.addEventListener("click", (event) => {
+  const id = event.target.dataset.id;
+
+  if (id) {
+    cambiarEstadoTarjeta(id, mostrarTareas);
+  }
+});
