@@ -47,6 +47,7 @@ export function cambiarEstadoTarjeta(id, mostrarTarjetas) {
   for (let tareaLista of tareas) {
     if (tareaLista.id === parseInt(id)) {
       tarea = tareaLista;
+      break;
     }
   }
 
@@ -58,6 +59,7 @@ export function cambiarEstadoTarjeta(id, mostrarTarjetas) {
     tarea.estado = "enProgreso";
   }
 
+  guardarTareas(tareas);
   if (mostrarTarjetas) {
     mostrarTarjetas(tareas);
   }
