@@ -1,10 +1,15 @@
+import { mostrarEstadisticas } from "./estadistica.js";
 import { mostrarTareas, getTareasFiltradas } from "./kanban.js";
 import { crearTarea, cargarTareas, cambiarEstadoTarjeta, eliminarTarea, editarTarea } from "./tarea.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const tareas = cargarTareas();
   mostrarTareas(tareas);
-  crearTarea(mostrarTareas);
+  mostrarEstadisticas(tareas);
+  crearTarea((nuevaLista) => {
+    mostrarTareas(nuevaLista);
+    mostrarEstadisticas(nuevaLista);
+  });
 
   const formFiltro = document.getElementById("filtrarForm");
   formFiltro.addEventListener("submit", (event) => {
@@ -25,11 +30,17 @@ document.addEventListener("click", (event) => {
   const id = elemento.dataset.id;
 
   if (elemento.classList.contains("enProgresoBoton") || elemento.classList.contains("hechaBoton")) {
-    cambiarEstadoTarjeta(id, mostrarTareas);
+    cambiarEstadoTarjeta(id, (nuevaLista) => {
+      mostrarTareas(nuevaLista);
+      mostrarEstadisticas(nuevaLista);
+    });
   }
 
   if (elemento.classList.contains("eliminarBoton")) {
-    eliminarTarea(id, mostrarTareas);
+    eliminarTarea(id, (nuevaLista) => {
+      mostrarTareas(nuevaLista);
+      mostrarEstadisticas(nuevaLista);
+    });
   }
 
   if (elemento.classList.contains("editarBoton")) {
