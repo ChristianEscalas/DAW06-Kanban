@@ -1,10 +1,23 @@
-import { mostrarTareas } from "./kanban.js";
+import { mostrarTareas, getTareasFiltradas } from "./kanban.js";
 import { crearTarea, cargarTareas, cambiarEstadoTarjeta, eliminarTarea, editarTarea } from "./tarea.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   const tareas = cargarTareas();
   mostrarTareas(tareas);
   crearTarea(mostrarTareas);
+
+  const formFiltro = document.getElementById("filtrarForm");
+  formFiltro.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const filtros = {
+      estado: formFiltro["estadFiltro"].value,
+      prioridad: formFiltro["prioridadFiltro"].value,
+    };
+
+    const tareasFiltradas = getTareasFiltradas(tareas, filtros);
+    mostrarTareas(tareasFiltradas);
+  });
 });
 
 document.addEventListener("click", (event) => {
