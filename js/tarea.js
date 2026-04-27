@@ -10,6 +10,10 @@ function calcularId() {
   return maxId + 1;
 }
 
+function guardarTareas(tareas) {
+  localStorage.setItem("listaTareas", JSON.stringify(tareas));
+}
+
 export function crearTarea() {
   const form = document.getElementById("crearForm");
 
@@ -26,6 +30,7 @@ export function crearTarea() {
 
     tareas.push(tarea);
     form.reset();
-    console.log(tareas);
+
+    guardarTareas(tareas);
   });
 }
