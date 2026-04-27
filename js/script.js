@@ -1,7 +1,25 @@
 import { mostrarTareas } from "./kanban.js";
-import { crearTarea, cargarTareas } from "./tarea.js";
+import { crearTarea, cargarTareas, cambiarEstadoTarjeta, eliminarTarea, editarTarea } from "./tarea.js";
 
-const tareas = cargarTareas();
+document.addEventListener("DOMContentLoaded", () => {
+  const tareas = cargarTareas();
+  mostrarTareas(tareas);
+  crearTarea(mostrarTareas);
+});
 
-crearTarea(mostrarTareas);
-mostrarTareas(tareas);
+document.addEventListener("click", (event) => {
+  const elemento = event.target;
+  const id = elemento.dataset.id;
+
+  if (elemento.classList.contains("enProgresoBoton") || elemento.classList.contains("hechaBoton")) {
+    cambiarEstadoTarjeta(id, mostrarTareas);
+  }
+
+  if (elemento.classList.contains("eliminarBoton")) {
+    eliminarTarea(id, mostrarTareas);
+  }
+
+  if (elemento.classList.contains("editarBoton")) {
+    editarTarea(id);
+  }
+});
