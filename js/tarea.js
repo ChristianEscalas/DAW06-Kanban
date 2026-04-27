@@ -51,6 +51,8 @@ export function cambiarEstadoTarjeta(id, mostrarTarjetas) {
     }
   }
 
+  if (!tarea) return;
+
   if (tarea.estado === "porHacer") {
     tarea.estado = "enProgreso";
   } else if (tarea.estado === "enProgreso") {
