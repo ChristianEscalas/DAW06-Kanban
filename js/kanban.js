@@ -1,8 +1,6 @@
 import { cargarTareas } from "./tarea.js";
 import { crearTarjetaTarea } from "./utils.js";
 
-const tareas = cargarTareas();
-
 export function getTareasFiltradas(tareas, filtros) {
   return tareas.filter((tarea) => {
     const cumpleEstado = filtros.estado === "" || tarea.estado === filtros.estado;
