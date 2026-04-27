@@ -1,4 +1,4 @@
-function crearParStrong(textoP, textoS, clase) {
+export function crearParStrong(textoP, textoS, clase) {
   const p = document.createElement("p");
   const strong = document.createElement("strong");
 
