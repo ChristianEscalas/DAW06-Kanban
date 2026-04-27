@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
       prioridad: formFiltro["prioridadFiltro"].value,
     };
 
-    const tareasFiltradas = getTareasFiltradas(tareas, filtros);
+    const tareasActualizadas = cargarTareas();
+    const tareasFiltradas = getTareasFiltradas(tareasActualizadas, filtros);
     mostrarTareas(tareasFiltradas);
   });
 });
