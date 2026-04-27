@@ -10,6 +10,15 @@ function crearParStrong(textoP, textoS, clase) {
   return p;
 }
 
+function crearBoton(texto, id) {
+  const boton = document.createElement("button");
+  boton.type = "button";
+  boton.appendChild(document.createTextNode(texto));
+  boton.id = id;
+
+  return boton;
+}
+
 export function crearTarjetaTarea(tarea) {
   const div = document.createElement("div");
   div.className = "tarjeta";
@@ -30,6 +39,18 @@ export function crearTarjetaTarea(tarea) {
 
   const fechaVencimiento = crearParStrong(tarea.fechaVencimiento, "fecha de vencimiento: ", "campo");
   div.appendChild(fechaVencimiento);
+
+  const divBotones = document.createElement("div");
+  divBotones.className = "botonesTarea";
+  if (tarea.estado === "porHacer") {
+    divBotones.appendChild(crearBoton("En progreso", "enProgresoBoton"));
+  } else if (tarea.estado === "enProgreso") {
+    divBotones.appendChild(crearBoton("Finalizada", "hechaBoton"));
+  } else {
+    divBotones.appendChild(crearBoton("En progreso", "enProgresoBoton"));
+  }
+  divBotones.appendChild(crearBoton("Eliminar", "eliminarBoton"));
+  div.appendChild(divBotones);
 
   return div;
 }
