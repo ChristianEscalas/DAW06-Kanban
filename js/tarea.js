@@ -1,4 +1,4 @@
-function cargarTareas() {
+export function cargarTareas() {
   return JSON.parse(localStorage.getItem("listaTareas")) || [];
 }
 
@@ -18,7 +18,7 @@ function guardarTareas(tareas) {
   localStorage.setItem("listaTareas", JSON.stringify(tareas));
 }
 
-export function crearTarea() {
+export function crearTarea(mostrarTareas) {
   const form = document.getElementById("crearForm");
 
   form.addEventListener("submit", (event) => {
@@ -34,7 +34,10 @@ export function crearTarea() {
 
     tareas.push(tarea);
     form.reset();
-
     guardarTareas(tareas);
+
+    if (mostrarTareas) {
+      mostrarTareas(tareas);
+    }
   });
 }
