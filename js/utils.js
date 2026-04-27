@@ -38,7 +38,7 @@ export function crearTarjetaTarea(tarea) {
   const estado = crearParStrong(tarea.estado, "Estado: ", "campo");
   div.appendChild(estado);
 
-  const fechaVencimiento = crearParStrong(tarea.fechaVencimiento, "fecha de vencimiento: ", "campo");
+  const fechaVencimiento = crearParStrong(tarea.fechaVencimiento, "Fecha de vencimiento: ", "campo");
   div.appendChild(fechaVencimiento);
 
   const divBotones = document.createElement("div");
