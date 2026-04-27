@@ -1,3 +1,7 @@
-import { crearTarea } from "./tarea.js";
+import { mostrarTareas } from "./kanban.js";
+import { crearTarea, cargarTareas } from "./tarea.js";
 
-crearTarea();
+const tareas = cargarTareas();
+
+crearTarea(mostrarTareas);
+mostrarTareas(tareas);
