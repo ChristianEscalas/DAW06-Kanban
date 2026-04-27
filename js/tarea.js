@@ -1,4 +1,8 @@
-const tareas = [];
+function cargarTareas() {
+  return JSON.parse(localStorage.getItem("listaTareas")) || [];
+}
+
+const tareas = cargarTareas();
 
 function calcularId() {
   let maxId = 0;
