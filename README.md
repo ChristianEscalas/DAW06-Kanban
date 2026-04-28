@@ -15,15 +15,28 @@ Permite organizar tareas en diferentes estados:
 ## Funciones
 
 - Crear nuevas tareas
+![Crear tarea](images\crearTarea.png)
+
 - Editar tareas
+![Editar tarea1](images\editar1.png)
+![Editar tarea2](images\editar2.png)
+
 - Eliminar tareas
+![Eliminar tarea](images\eliminar.png)
+
 - Cambiar el estado de las tareas
+![Cambiar de estado la tarea](images\cambiarEstado.png)
+
 - Filtrar por estado y prioridad
+![Filtrar](images\filtrar.png)
+
 - Ver estadísticas:
   - Total de tareas
   - Tareas por estado
   - Porcentaje por estado
   - Porcentaje por prioridad
+![Estadisticas](images\estadisticas.png)
+
 - Persistencia con **localStorage**
 
 ---
@@ -85,3 +98,7 @@ Usa los botones para cambiar su estado entre:
 │ ├── tarea.js
 │ └── utils.js
 └── README.md
+
+## Enlace de la página desplegada
+
+[Ir a la página desplegada](https://christianescalas.github.io/DAW06-Kanban/)
