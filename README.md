@@ -19,11 +19,11 @@ Permite organizar tareas en diferentes estados:
 - Eliminar tareas
 - Cambiar el estado de las tareas
 - Filtrar por estado y prioridad
-- Buscar tareas
 - Ver estadísticas:
   - Total de tareas
   - Tareas por estado
-  - Porcentaje completadas
+  - Porcentaje por estado
+  - Porcentaje por prioridad
 - Persistencia con **localStorage**
 
 ---
@@ -68,16 +68,20 @@ Usa los botones para cambiar su estado entre:
 ### Filtrar y buscar
 
 - Usa los filtros por estado o prioridad
-- Escribe en el buscador para encontrar tareas
 
 ---
 
 ## Estructura del proyecto
 
-/projecto
-|-- index.html
-|-- css/
-|-- styles.css
-|-- js/
-|--
-|-- README.md
+/proyecto
+│
+├── index.html
+├── css/
+│ └── styles.css
+├── js/
+│ ├── estadistica.js
+│ ├── kanban.js
+│ ├── script.js
+│ ├── tarea.js
+│ └── utils.js
+└── README.md
