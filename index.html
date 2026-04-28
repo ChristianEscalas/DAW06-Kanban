@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tareas Kanban</title>
+  <link href="./css/styles.css" rel="stylesheet">
+  <script src="./js/script.js" type="module"></script>
+</head>
+<body>
+  <header>
+    <h1>Gestión de tareas</h1>
+    
+    <nav>
+      <ul>
+        <li><a href="#tareas">Ver tareas</a></li>
+        <li><a href="#crearTareas">Gestionar tareas</a></li>
+        <li><a href="#estadisticas">Ver estadísticas</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="tareas">
+      <h2>Tareas</h2>
+
+      <div id="filtrar">
+        <form id="filtrarForm">
+          <div class="campo">
+            <label for="estadFiltro">Estado:</label>
+            <select id="estadFiltro" name="estado">
+              <option value="">Todos</option>
+              <option value="porHacer">Por hacer</option>
+              <option value="enProgreso">En progreso</option>
+              <option value="hecha">Hecha</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="prioridadFiltro">Prioridad:</label>
+            <select id="prioridadFiltro" name="prioridad">
+              <option value="">Todos</option>
+              <option value="baja">Baja</option>
+              <option value="media">Media</option>
+              <option value="alta">Alta</option>
+            </select>
+          </div>
+
+          <button type="submit" id="filtrarTareas">Filtrar</button>
+        </form>
+      </div>
+
+      <div id="tablero">
+        <div class="columna" id="columna-porHacer">
+          <h3>Por hacer</h3>
+          <div id="tarjetasPorHacer"></div>
+        </div>
+
+        <div class="columna" id="columna-enProgreso">
+          <h3>En progreso</h3>
+          <div id="tarjetasEnProgreso"></div>
+        </div>
+
+        <div class="columna" id="columna-hecha">
+          <h3>Terminadas</h3>
+          <div id="tarjetasHechas"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="crearTareas">
+      <h2>Crear tarea</h2>
+
+      <div id="crear">
+        <form id="crearForm">
+          <div class="campo">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+          </div>
+
+          <div class="campo">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion" maxlength="400" required>
+          </div>
+
+          <div class="campo">
+            <label for="prioridadCrear">Prioridad:</label>
+            <select id="prioridadCrear" name="prioridad" required>
+              <option value="baja">Baja</option>
+              <option value="media">Media</option>
+              <option value="alta">Alta</option>
+            </select>
+          </div>
+
+          <div class="campo">
+            <label for="fechaVencimiento">Fecha de vencimiento:</label>
+            <input type="date" id="fechaVencimiento" name="fechaVencimiento" required>
+          </div>
+
+          <button type="submit" id="crearTarea">Crear</button>
+          <button type="reset" id="resetearTarea">Cancelar</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="estadisticas">
+      <h2>Estadísticas</h2>
+
+      <div id="estadistica-total">
+        <h3>Total de tareas</h3>
+        <div id="infoTotal"></div>
+      </div>
+      <div id="estadistica-porEstado">
+        <h3>Total por estado</h3>
+        <div id="infoEstado"></div>
+      </div>
+
+      <div id="estadistica-porcentajes">
+        <h3>Porcentaje por estado y por prioridad</h3>
+        <div id="infoPorcentaje"></div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Christian Escalas &copy; - CIFP Pau Casesnoves 2025/26</p>
+  </footer>
+</body>
+</html>
